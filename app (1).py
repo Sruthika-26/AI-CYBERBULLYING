@@ -12,14 +12,9 @@ import gender_guesser.detector as gender
 nltk.download('vader_lexicon')
 from nltk.sentiment import SentimentIntensityAnalyzer
 import os
-import subprocess
 import spacy
-
-try:
-    nlp = spacy.load("en_core_web_sm")
-except OSError:
-    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
-    nlp = spacy.load("en_core_web_sm")
+import en_core_web_sm
+nlp = en_core_web_sm.load()
 
 s = SentimentIntensityAnalyzer()
 d = gender.Detector()
