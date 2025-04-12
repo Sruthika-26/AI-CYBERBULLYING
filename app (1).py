@@ -11,7 +11,6 @@ import spacy
 import gender_guesser.detector as gender
 nltk.download('vader_lexicon')
 from nltk.sentiment import SentimentIntensityAnalyzer
-import os
 import spacy
 import en_core_web_sm
 nlp = en_core_web_sm.load()
