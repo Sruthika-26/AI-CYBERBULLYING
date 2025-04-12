@@ -6,6 +6,7 @@ langdetect==1.0.9
 googletrans==4.0.0rc1
 nltk==3.8.1
 spacy==3.7.2
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
 gender-guesser==0.4.0
 wget==3.2
 
