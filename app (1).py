@@ -146,7 +146,6 @@ def predict(text):
 
     return result, sentiment, gender_analysis
 
-# Streamlit App
 st.title("🚨 AI Cyberbullying Detection with HateBERT")
 input_text = st.text_area("Enter a comment or tweet:")
 
