@@ -11,17 +11,15 @@ import spacy
 import gender_guesser.detector as gender
 nltk.download('vader_lexicon')
 from nltk.sentiment import SentimentIntensityAnalyzer
-import spacy
 import os
-import wget
-model_path = os.path.join(os.getcwd(), "en_core_web_sm")
-if not os.path.exists(model_path):
-    url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl"
-    model_file = wget.download(url)
-    os.system(f"pip install {model_file}")
+import subprocess
+import spacy
 
-nlp = spacy.load("en_core_web_sm")
-
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
+    nlp = spacy.load("en_core_web_sm")
 
 s = SentimentIntensityAnalyzer()
 d = gender.Detector()
