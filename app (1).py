@@ -19,7 +19,9 @@ s = SentimentIntensityAnalyzer()
 d = gender.Detector()
 
 indian_names_df = pd.read_csv("indian_names.csv")
-indian_name_gender_map = dict(zip(indian_names_df['name'].str.lower(), indian_names_df['gender'].str.lower()))
+indian_names_df[['name', 'gender']] = indian_names_df['name,gender'].str.split(",", expand=True)
+indian_names_df.drop(columns=['name,gender'], inplace=True)
+
 
 model = AutoModelForSequenceClassification.from_pretrained("GroNLP/hateBERT", cache_dir="./models_cache")
 tokenizer = AutoTokenizer.from_pretrained("GroNLP/hateBERT", cache_dir="./models_cache")
