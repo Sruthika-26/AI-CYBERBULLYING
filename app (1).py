@@ -18,10 +18,6 @@ nlp = en_core_web_sm.load()
 s = SentimentIntensityAnalyzer()
 d = gender.Detector()
 
-indian_names_df = pd.read_csv("indian_names.csv")
-indian_names_df[['name', 'gender']] = indian_names_df['name,gender'].str.split(",", expand=True)
-indian_names_df.drop(columns=['name,gender'], inplace=True)
-
 
 model = AutoModelForSequenceClassification.from_pretrained("GroNLP/hateBERT", cache_dir="./models_cache")
 tokenizer = AutoTokenizer.from_pretrained("GroNLP/hateBERT", cache_dir="./models_cache")
@@ -39,6 +35,15 @@ def detect_translate(text):
         translated = translator.translate(text, dest='en').text
         return translated, detected_lang
     return text, detected_lang
+    
+def load_names():
+    df = pd.read_csv("indian_names.csv")
+    df[['name', 'gender']] = df['name,gender'].astype(str).str.split(",", expand=True)
+    df['name'] = df['name'].str.lower()
+    name_gender_map = dict(zip(df['name'], df['gender']))
+    return name_gender_map
+
+indian_name_gender_map = load_names()
 
 def analyze_sentiment(text):
     scores = s.polarity_scores(text)
