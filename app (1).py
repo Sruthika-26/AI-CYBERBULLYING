@@ -153,8 +153,9 @@ def predict(text):
         result = "✅ Not Cyberbullying"
 
     return result, sentiment, gender_analysis
-
-st.title("🚨 AI Cyberbullying Detection with HateBERT")
+    
+st.set_page_config(page_title="AI Cyberbullying Detection", page_icon="🚨")
+st.title("🕵️‍♀️ AI Cyberbullying Detection with HateBERT")
 input_text = st.text_area("Enter a comment or tweet:")
 
 if st.button("🔍 Analyze"):
