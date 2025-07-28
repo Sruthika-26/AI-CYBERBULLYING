@@ -1,14 +1,19 @@
 streamlit==1.32.0
 pandas==2.2.1
+
+# Use pre-built CPU versions of torch and dependencies
 torch==2.2.1+cpu
 torchvision==0.17.1+cpu
 torchaudio==2.2.1+cpu
 -f https://download.pytorch.org/whl/torch_stable.html
+
 transformers==4.38.2
 langdetect==1.0.9
 deep-translator==1.11.4
 nltk==3.8.1
 spacy==3.7.2
-en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
-gender-guesser==0.4.0
 
+# Download spaCy model from hosted URL
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
+
+gender-guesser==0.4.0
